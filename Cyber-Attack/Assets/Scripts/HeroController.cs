@@ -44,6 +44,11 @@ public class HeroController : MonoBehaviour
     private void JumpControl() {
         if (Input.GetButtonDown("Jump")) {
             jump = true;
+            Animator.SetBool("IsJumping", true);
         }
+    }
+
+    public void OnLanding() {
+        Animator.SetBool("IsJumping", false);
     }
 }
