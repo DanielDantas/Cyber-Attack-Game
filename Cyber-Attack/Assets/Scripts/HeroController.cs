@@ -26,7 +26,7 @@ public class HeroController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+        characterController.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 }
