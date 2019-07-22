@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c1e7529d018e94fbfef23bd8a811c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keys: {fileID: 0}
+  keys: {fileID: 4374344394278929383, guid: 2818acaab36836e4ba00b69e72cd2bb1, type: 3}
   gameTime: 0
   keyVector: {x: 5, y: 5.5, z: 0}
   keySpawnTime: 5
@@ -1072,7 +1072,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086485618}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
