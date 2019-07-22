@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class ItemController : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;    // The Item's rigid body
+    public Animator animator;
     public float spawnTime;
 
 
@@ -33,6 +34,7 @@ public class ItemController : MonoBehaviour
     private void FixedUpdate()
     {
         spawnTime -= Time.deltaTime;
+        animator.SetFloat("spawnTime", spawnTime);
         if(spawnTime < 0)
         {
             Destroy(gameObject, .1f);
