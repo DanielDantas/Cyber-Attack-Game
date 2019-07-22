@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
-    public CharacterController characterController;
+    public CharacterController CharacterController;
+    public Animator Animator;
+    public Sprite DeadCat;
+    public Sprite JumpCat;
+    public Sprite IdleCat;
+
+
     public float runSpeed = 40f;
     private float horizontalMove = 0f;
     private bool jump = false;
@@ -18,15 +24,26 @@ public class HeroController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        CatAliveControl();
         horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
-
-        if (Input.GetButtonDown("Jump")) {
-            jump = true;
-        }
+        Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        JumpControl();
     }
 
     private void FixedUpdate() {
-        characterController.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        CharacterController.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+
+    private void CatAliveControl() {
+        if (transform.position.y <= -3.66) {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = DeadCat;
+        }
+    }
+
+    private void JumpControl() {
+        if (Input.GetButtonDown("Jump")) {
+            jump = true;
+        }
     }
 }
