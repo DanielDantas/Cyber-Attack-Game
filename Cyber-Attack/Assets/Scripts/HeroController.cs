@@ -10,14 +10,23 @@ public class HeroController : MonoBehaviour
     private bool jump = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+
+        if (Input.GetButtonDown("Jump")) {
+            jump = true;
+        }
+    }
+
+    private void FixedUpdate() {
+        horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+        jump = false;
     }
 }
