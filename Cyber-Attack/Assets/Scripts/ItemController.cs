@@ -42,7 +42,7 @@ public class ItemController : MonoBehaviour
     private void Flip()
     {
         // Switch the way the cloud is moving.
-        isMovingRight = !isMovingRight;
-        horizontalMove *= -1;
+        //isMovingRight = !isMovingRight;
+        //horizontalMove *= -1;
     }
 }
