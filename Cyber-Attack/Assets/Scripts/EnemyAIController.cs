@@ -31,6 +31,7 @@ public class EnemyAIController : MonoBehaviour
         if (seeker.IsDone()) {
             seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
         }
+
     }
 
     void OnPathComplete(Path p) {
