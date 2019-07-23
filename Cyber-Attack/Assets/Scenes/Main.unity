@@ -120,85 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &147792606
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4167472053652179478, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyAI2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179561, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167472053652179563, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: e0a81e5ab8c5d2a4bb0fa987be9a8cfa, type: 2}
-    - target: {fileID: 2582430604142185016, guid: 54eda869f8eed0a488a50d73510289a5,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: e0a81e5ab8c5d2a4bb0fa987be9a8cfa, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 54eda869f8eed0a488a50d73510289a5, type: 3}
 --- !u!1 &207778751
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +621,7 @@ MonoBehaviour:
   phishingKeys: {fileID: 7913212831664321760, guid: b78e071e1c9ce41418419914c68d29a1,
     type: 3}
   bricks: {fileID: 3060079155974883828, guid: d17870cbc9cd33d4295360094de573b6, type: 3}
-  enemies: {fileID: 4167472053652179478, guid: 54eda869f8eed0a488a50d73510289a5, type: 3}
+  enemies: {fileID: 328220322812771958, guid: b441efd6cf36082419b7c88f6984488a, type: 3}
   gameTime: 0
   phishingKeySpawnPercent: 5
   cloudController: {fileID: 0}
