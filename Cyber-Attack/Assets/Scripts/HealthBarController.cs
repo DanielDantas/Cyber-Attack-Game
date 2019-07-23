@@ -20,7 +20,11 @@ public class HealthBarController : MonoBehaviour
         if (health > 0)
         {
             GetComponent<SpriteRenderer>().sprite = sprites[23 - health];
-        } 
+        }
+        else
+        {
+
+        }
 
     }
 
