@@ -94,8 +94,9 @@ public class CloudController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D otherObj)
+    private void OnTrigger2DEnter(Collider2D otherObj)
     {
+        Debug.Log("Hit by" + otherObj.gameObject.tag);
         if (otherObj.gameObject.tag == "Enemy")
         {
             if (firewall)
@@ -119,7 +120,7 @@ public class CloudController : MonoBehaviour
             }
         }
     }
-
+     
     private void Move(float move) {
         rigidbody2D.velocity = new Vector2(move, rigidbody2D.velocity.y);
     }
