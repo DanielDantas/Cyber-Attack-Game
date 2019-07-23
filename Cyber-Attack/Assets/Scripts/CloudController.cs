@@ -42,7 +42,7 @@ public class CloudController : MonoBehaviour
         {
             Firewall.transform.position = this.transform.position;
             Firewall.GetComponent<SpriteRenderer>().enabled = true;
-            Firewall.GetComponent<SpriteRenderer>().color = new Color(1, .5f, .5f, offset[i/10]);
+            //Firewall.GetComponent<SpriteRenderer>().color = new Color(1, .5f, .5f, offset[i/10]);
         } else
         {
             Firewall.GetComponent<SpriteRenderer>().enabled = false;
