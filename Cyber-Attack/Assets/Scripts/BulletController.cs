@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
     public int Damage = 1;
     public Sprite Zero;
     public Sprite One;
+    public Sprite Explode;
     public GameObject ImpactEffect;
     public Rigidbody2D BulletRB;
 
@@ -30,9 +31,21 @@ public class BulletController : MonoBehaviour
             enemy.TakeDamage(Damage);
         }
 
-        Instantiate(ImpactEffect, transform.position, transform.rotation);
-
+        spriteRenderer.sprite = Explode;
+        StartCoroutine(FadeImage());
         Destroy(gameObject);
+    }
+
+    IEnumerator FadeImage()
+    {
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            spriteRenderer.color = new Color(1, 1, 1, i);
+            yield return null;
+        }
+
     }
 
     private void ChangeSprite() {
