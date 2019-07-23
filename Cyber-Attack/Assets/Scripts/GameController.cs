@@ -10,9 +10,12 @@ namespace Assets.Scripts
     public class GameController : MonoBehaviour
     {
         public GameObject keys;
+        public GameObject phishingKeys;
         public GameObject bricks;
         public GameObject enemies;
         public float gameTime = 0;
+
+        public float phishingKeySpawnPercent; //(between 1-10) 10 = 100 percent spawn
 
         public CloudController cloudController;
 
@@ -53,7 +56,7 @@ namespace Assets.Scripts
 
             if (cloudController.encripted && gameTime - lastEncript > encriptTime) {
                 cloudController.encripted = false;
-                lastKeySpawn = gameTime;//Forces time without encription
+                lastKeySpawn = gameTime;
             }
 
             if (!cloudController.encripted && gameTime - lastKeySpawn > keySpawnTime) {
@@ -64,7 +67,7 @@ namespace Assets.Scripts
 
             if (cloudController.firewall && gameTime - lastFirewall > firewallTime) {
                 cloudController.firewall = false;
-                lastBrickSpawn = gameTime;//Forces time without encription
+                lastBrickSpawn = gameTime;
             }
 
             if (!cloudController.firewall && gameTime - lastBrickSpawn > brickSpawnTime) {
@@ -75,7 +78,13 @@ namespace Assets.Scripts
 
 
         private void SpawnKey() {
-            Instantiate(keys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
+            if (UnityEngine.Random.Range(0, 10) < phishingKeySpawnPercent)
+            {
+                Instantiate(phishingKeys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
+            } else
+            {
+                Instantiate(keys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
+            }
         }
 
         private void SpawnBrick() {
@@ -96,6 +105,11 @@ namespace Assets.Scripts
             cloudController.firewall = true;
             lastFirewall = gameTime;
             Debug.Log("Flame On");
+        }
+
+        public void phish()
+        {
+
         }
     }
 }
