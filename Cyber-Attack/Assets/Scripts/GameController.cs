@@ -18,6 +18,7 @@ namespace Assets.Scripts
         public float phishingKeySpawnPercent; //(between 1-10) 10 = 100 percent spawn
 
         public CloudController cloudController;
+        public HeroController heroController;
 
         public float encriptTime;
         public float lastEncript = 0;
@@ -33,6 +34,7 @@ namespace Assets.Scripts
         public Vector3 enemyVector;
         public float enemySpawnTime;
         public float lastEnemySpawn = 0;
+        public int enemyNumber = 50;
 
         // Start is called before the first frame update
         private void Start() {
@@ -73,15 +75,21 @@ namespace Assets.Scripts
                 SpawnBrick();
                 lastBrickSpawn = gameTime;
             }
+
+            if(enemyNumber <= 0) {
+                GameObject HeroGameObject = GameObject.FindGameObjectWithTag("Hero");
+                if (HeroGameObject != null) {
+                    heroController = HeroGameObject.GetComponent<HeroController>();
+                    heroController.SetWinner();
+                }
+            }
         }
 
 
         private void SpawnKey() {
-            if (UnityEngine.Random.Range(0, 10) < phishingKeySpawnPercent)
-            {
+            if (UnityEngine.Random.Range(0, 10) < phishingKeySpawnPercent) {
                 Instantiate(phishingKeys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
-            } else
-            {
+            } else {
                 Instantiate(keys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
             }
         }
@@ -106,9 +114,12 @@ namespace Assets.Scripts
             Debug.Log("Flame On");
         }
 
-        public void phish()
-        {
+        public void phish() {
 
+        }
+
+        public void UpdateEnemyNumber(int increment) {
+            enemyNumber += increment;
         }
     }
 }

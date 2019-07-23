@@ -62,4 +62,8 @@ public class HeroController : MonoBehaviour
     public void OnLanding() {
         Animator.SetBool("IsJumping", false);
     }
+
+    public void SetWinner() {
+        Animator.SetBool("Winner", true);
+    }
 }
