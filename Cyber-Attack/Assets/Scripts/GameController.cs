@@ -114,8 +114,9 @@ namespace Assets.Scripts
             Debug.Log("Flame On");
         }
 
-        public void phish() {
-
+        public void phish()
+        {
+            cloudController.HealthBar.GetComponent<HealthBarController>().hit(1);
         }
 
         public void UpdateEnemyNumber(int increment) {
