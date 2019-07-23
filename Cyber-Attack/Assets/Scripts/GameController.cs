@@ -17,12 +17,16 @@ namespace Assets.Scripts
 
         public float encriptTime;
         public float lastEncript = 0;
+        public float firewallTime;
         public float lastFirewall = 0;
 
         public Vector3 keyVector;
         public float keySpawnTime;
-        public float lastSpawn = 0;
-        
+        public float lastKeySpawn = 0;
+        public Vector3 brickVector;
+        public float brickSpawnTime;
+        public float lastBrickSpawn = 0;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -45,13 +49,26 @@ namespace Assets.Scripts
             if(cloudController.encripted && gameTime - lastEncript > encriptTime)
             {
                 cloudController.encripted = false;
-                lastSpawn = gameTime;//Forces time without encription
+                lastKeySpawn = gameTime;//Forces time without encription
             }
 
-            if(!cloudController.encripted && gameTime - lastSpawn > keySpawnTime)
+            if(!cloudController.encripted && gameTime - lastKeySpawn > keySpawnTime)
             { 
                 SpawnKey();
-                lastSpawn = gameTime;
+                lastKeySpawn = gameTime;
+            }
+
+
+            if (cloudController.encripted && gameTime - lastFirewall > firewallTime)
+            {
+                cloudController.encripted = false;
+                lastBrickSpawn = gameTime;//Forces time without encription
+            }
+
+            if (!cloudController.encripted && gameTime - lastBrickSpawn > brickSpawnTime)
+            {
+                SpawnBrick();
+                lastBrickSpawn = gameTime;
             }
         }
 
@@ -59,6 +76,11 @@ namespace Assets.Scripts
         private void SpawnKey()
         {
              Instantiate(keys, new Vector3(UnityEngine.Random.Range(-keyVector.x,keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);           
+        }
+
+        private void SpawnBrick()
+        {
+            Instantiate(bricks, new Vector3(UnityEngine.Random.Range(-brickVector.x, brickVector.x), brickVector.y, brickVector.z), Quaternion.identity);
         }
 
         public void encriptData()
