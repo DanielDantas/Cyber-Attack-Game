@@ -10,17 +10,25 @@ public class CloudController : MonoBehaviour
     private bool isMovingRight = true;  // Check if the Cloud is moving to the right direction
     private Rigidbody2D rigidbody2D;    // The Cloud's rigid body
 
+    public Animator animator;
+
+    public bool firewall = false;
+    public bool encripted = false;
+
+
+
     // Start is called before the first frame update
     private void Start() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0f);
         // Set cloud to start moving to the right
         horizontalMove = moveSpeed;
+        animator.speed = .1f;
     }
 
     // Update is called once per frame
     private void Update() {
-
+        animator.SetBool("firewall", encripted);
     }
 
     private void FixedUpdate() {
