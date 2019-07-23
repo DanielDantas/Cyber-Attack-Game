@@ -12,6 +12,8 @@ public class CloudController : MonoBehaviour
 
     public GameObject Lock;
     public GameObject Firewall;
+    public GameObject HealthBar;
+
     public int firewallCount;
     private int currentFirewallCount;
     private float[] offset = { -.5f, -.4f, -.2f, .2f, .4f, .5f };
@@ -106,10 +108,14 @@ public class CloudController : MonoBehaviour
                     currentFirewallCount = firewallCount;
                 }
             }
-
-            if (encripted)
+            else if (encripted)
             {
                 otherObj.gameObject.GetComponent<EnemyController>().Bounce();
+            }
+            else
+            {
+                otherObj.gameObject.GetComponent<EnemyController>().Die();
+                HealthBar.GetComponent<HealthBarController>().hit(1);
             }
         }
     }
