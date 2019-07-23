@@ -33,7 +33,7 @@ public class BulletController : MonoBehaviour
 
         spriteRenderer.sprite = Explode;
         StartCoroutine(FadeImage());
-        Destroy(gameObject);
+        Destroy(gameObject,.1f);
     }
 
     IEnumerator FadeImage()
