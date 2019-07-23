@@ -51,6 +51,10 @@ namespace Assets.Scripts
                 {
                     gameController.firewall();
                 }
+                else if(gameObject.tag == "PKey")
+                {
+                    gameController.phish();
+                }
                 Destroy(gameObject, .1f);
             }
 

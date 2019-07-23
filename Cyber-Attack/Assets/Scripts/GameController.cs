@@ -106,5 +106,10 @@ namespace Assets.Scripts
             lastFirewall = gameTime;
             Debug.Log("Flame On");
         }
+
+        public void phish()
+        {
+
+        }
     }
 }
