@@ -21,7 +21,7 @@ namespace Assets.Scripts
             rigidbody2D = GetComponent<Rigidbody2D>();
             img = GetComponent<SpriteRenderer>();
             spawnTime = 10;
-            Debug.Log("Spawned : " + gameObject.name + " : " + Time.time);
+            Debug.Log("Spawned : " + gameObject.tag + " : " + Time.time);
             GameObject GameControllerObject = GameObject.FindGameObjectWithTag("GameController");
             if(GameControllerObject != null)
             {
@@ -43,11 +43,11 @@ namespace Assets.Scripts
         {
             if (otherObj.gameObject.tag == "Player")
             {
-                if (this.tag == "Key")
+                if (gameObject.tag == "Key")
                 {
                     gameController.encriptData();
                 }
-                else if(this.tag == "Brick")
+                else if(gameObject.tag == "Brick")
                 {
                     gameController.firewall();
                 }

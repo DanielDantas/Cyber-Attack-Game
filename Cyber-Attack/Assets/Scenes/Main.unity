@@ -578,8 +578,8 @@ MonoBehaviour:
   keyVector: {x: 5, y: 5.5, z: 0}
   keySpawnTime: 5
   lastKeySpawn: 0
-  brickVector: {x: 0, y: 0, z: 0}
-  brickSpawnTime: 0
+  brickVector: {x: 5, y: 5.5, z: 0}
+  brickSpawnTime: 5
   lastBrickSpawn: 0
   enemyVector: {x: 5, y: 5.5, z: 0}
   enemySpawnTime: 5

@@ -46,7 +46,7 @@ namespace Assets.Scripts
         private void Update() {
             gameTime += Time.deltaTime;
 
-            if (gameTime - lastEnemySpawn > enemySpawnTime) {
+            if (gameTime - lastEnemySpawn > enemySpawnTime) {//we should use waves for this
                 SpawnEnemy();
                 lastEnemySpawn = gameTime;
             }
@@ -62,12 +62,12 @@ namespace Assets.Scripts
             }
 
 
-            if (cloudController.encripted && gameTime - lastFirewall > firewallTime) {
-                cloudController.encripted = false;
+            if (cloudController.firewall && gameTime - lastFirewall > firewallTime) {
+                cloudController.firewall = false;
                 lastBrickSpawn = gameTime;//Forces time without encription
             }
 
-            if (!cloudController.encripted && gameTime - lastBrickSpawn > brickSpawnTime) {
+            if (!cloudController.firewall && gameTime - lastBrickSpawn > brickSpawnTime) {
                 SpawnBrick();
                 lastBrickSpawn = gameTime;
             }
@@ -93,9 +93,9 @@ namespace Assets.Scripts
         }
 
         public void firewall() {
-            cloudController.encripted = true;
+            cloudController.firewall = true;
             lastFirewall = gameTime;
-            Debug.Log("Encripted");
+            Debug.Log("Flame On");
         }
     }
 }

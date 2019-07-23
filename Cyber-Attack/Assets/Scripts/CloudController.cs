@@ -28,7 +28,9 @@ public class CloudController : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
-        animator.SetBool("firewall", encripted);
+
+        animator.SetBool("firewall", firewall);
+        animator.SetBool("encripted", encripted);
     }
 
     private void FixedUpdate() {
