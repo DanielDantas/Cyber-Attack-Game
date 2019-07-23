@@ -64,7 +64,6 @@ namespace Assets.Scripts
                 lastKeySpawn = gameTime;
             }
 
-
             if (cloudController.firewall && gameTime - lastFirewall > firewallTime) {
                 cloudController.firewall = false;
                 lastBrickSpawn = gameTime;
