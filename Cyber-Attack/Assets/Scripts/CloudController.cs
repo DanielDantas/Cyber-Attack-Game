@@ -42,7 +42,7 @@ public class CloudController : MonoBehaviour
         {
             Firewall.transform.position = this.transform.position;
             Firewall.GetComponent<SpriteRenderer>().enabled = true;
-            Firewall.GetComponent<SpriteRenderer>().color = new Color(1, .5f, .5f, offset[i]);
+            Firewall.GetComponent<SpriteRenderer>().color = new Color(1, .5f, .5f, offset[i/10]);
         } else
         {
             Firewall.GetComponent<SpriteRenderer>().enabled = false;
@@ -50,7 +50,7 @@ public class CloudController : MonoBehaviour
 
         if(encripted)
         {
-            Lock.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + offset[i]);
+            Lock.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + offset[i/10]);
             
             Lock.GetComponent<SpriteRenderer>().enabled = true;
         } else
@@ -61,7 +61,7 @@ public class CloudController : MonoBehaviour
         if (offsetForward)
         {
             i++;
-            if (i >= offset.Length)
+            if (i >= offset.Length*10)
             {
                 i--;
                 offsetForward = false;
@@ -94,8 +94,9 @@ public class CloudController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D otherObj)
+    private void OnTrigger2DEnter(Collider2D otherObj)
     {
+        Debug.Log("Hit by" + otherObj.gameObject.tag);
         if (otherObj.gameObject.tag == "Enemy")
         {
             if (firewall)
@@ -119,7 +120,7 @@ public class CloudController : MonoBehaviour
             }
         }
     }
-
+     
     private void Move(float move) {
         rigidbody2D.velocity = new Vector2(move, rigidbody2D.velocity.y);
     }

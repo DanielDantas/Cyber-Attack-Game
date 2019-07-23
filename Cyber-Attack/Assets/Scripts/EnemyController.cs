@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         if (bouncing)
         {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.position.x+(transform.position.x-lastPos.x), transform.position.y + (transform.position.y - lastPos.y)), ForceMode2D.Impulse);

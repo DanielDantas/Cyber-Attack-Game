@@ -791,9 +791,9 @@ MonoBehaviour:
   gameTime: 0
   phishingKeySpawnPercent: 5
   cloudController: {fileID: 0}
-  encriptTime: 5
+  encriptTime: 15
   lastEncript: 0
-  firewallTime: 5
+  firewallTime: 10
   lastFirewall: 0
   keyVector: {x: 5, y: 5.5, z: 0}
   keySpawnTime: 5
@@ -1951,6 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118519125}
   - component: {fileID: 2118519124}
+  - component: {fileID: 2118519126}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2022,6 +2023,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2118519126
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118519123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2fddd25700775a440b56ed4baf1a273b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1577128048918978325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2029,11 +2049,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1577128048854294887, guid: bb62de754b9347a4fb108f741a0fa35a,
-        type: 3}
-      propertyPath: m_Name
-      value: Cloud-Main
-      objectReference: {fileID: 0}
     - target: {fileID: 1577128048854294881, guid: bb62de754b9347a4fb108f741a0fa35a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2089,6 +2104,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1577128048854294887, guid: bb62de754b9347a4fb108f741a0fa35a,
+        type: 3}
+      propertyPath: m_Name
+      value: Cloud-Main
+      objectReference: {fileID: 0}
     - target: {fileID: 1577128048854294880, guid: bb62de754b9347a4fb108f741a0fa35a,
         type: 3}
       propertyPath: Lock
@@ -2099,5 +2119,10 @@ PrefabInstance:
       propertyPath: Firewall
       value: 
       objectReference: {fileID: 207778751}
+    - target: {fileID: 1577128048854294882, guid: bb62de754b9347a4fb108f741a0fa35a,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb62de754b9347a4fb108f741a0fa35a, type: 3}
