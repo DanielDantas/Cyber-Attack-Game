@@ -8,6 +8,7 @@ TagManager:
   - Brick
   - Key
   - Enemy
+  - PKey
   layers:
   - Default
   - TransparentFX
