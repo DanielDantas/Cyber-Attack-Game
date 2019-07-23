@@ -95,13 +95,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 4167472053652179478}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e0a81e5ab8c5d2a4bb0fa987be9a8cfa, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
 --- !u!114 &4167472053652179476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78eee0db47850994bb6ccd2af2ca40fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1577128048854294887, guid: bb62de754b9347a4fb108f741a0fa35a, type: 3}
   speed: 400
   nextWayPointDistance: 3
 --- !u!50 &4167472053652179477
@@ -233,6 +232,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1874472930909959525, guid: f63c2b4b7434f48449b28c422a65c037,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: e0a81e5ab8c5d2a4bb0fa987be9a8cfa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63c2b4b7434f48449b28c422a65c037, type: 3}
 --- !u!4 &2582430604142185019 stripped

@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class EnemyAIController : MonoBehaviour
 {
-    public GameObject target;
+    private GameObject target;
 
     public float speed = 200f;
     public float nextWayPointDistance = 3f;
@@ -22,6 +22,7 @@ public class EnemyAIController : MonoBehaviour
     void Start() {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Cloud");
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
