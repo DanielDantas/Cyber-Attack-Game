@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int Health = 1;
+    private bool bouncing = false;
+    private Vector3 lastPos;
 
     // Start is called before the first frame update
     private void Start() {
@@ -13,7 +15,12 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
+        if (bouncing)
+        {
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.position.x+(transform.position.x-lastPos.x), transform.position.y + (transform.position.y - lastPos.y)), ForceMode2D.Impulse);
+        }
 
+        lastPos = transform.position;
     }
 
     public void TakeDamage(int damage) {
@@ -24,7 +31,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Die() {
+    public void Die() {
         Destroy(gameObject);
+    }
+
+    public void Bounce()
+    {
+        bouncing = true;
+        
     }
 }

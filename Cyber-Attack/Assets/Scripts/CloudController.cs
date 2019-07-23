@@ -12,6 +12,8 @@ public class CloudController : MonoBehaviour
 
     public GameObject Lock;
     public GameObject Firewall;
+    public int firewallCount;
+    private int currentFirewallCount;
     private float[] offset = { -.5f, -.4f, -.2f, .2f, .4f, .5f };
     private float[] fade = { .75f, .79f, .8f, .9f, .98f, 1 };
     private int i = 0;
@@ -87,6 +89,28 @@ public class CloudController : MonoBehaviour
         else if (transform.position.x >= 5f && isMovingRight) {
             // ... flip the direction.
             Flip();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D otherObj)
+    {
+        if (otherObj.gameObject.tag == "Enemy")
+        {
+            if (firewall)
+            {
+                otherObj.gameObject.GetComponent<EnemyController>().Die();
+                currentFirewallCount--;
+                if (currentFirewallCount <=0 )
+                {
+                    firewall = false;
+                    currentFirewallCount = firewallCount;
+                }
+            }
+
+            if (encripted)
+            {
+                otherObj.gameObject.GetComponent<EnemyController>().Bounce();
+            }
         }
     }
 
