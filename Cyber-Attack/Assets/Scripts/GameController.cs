@@ -18,7 +18,7 @@ namespace Assets.Scripts
         public float phishingKeySpawnPercent; //(between 1-10) 10 = 100 percent spawn
 
         public CloudController cloudController;
-        public HeroController heroController;
+        private HeroController heroController;
 
         public float encriptTime;
         public float lastEncript = 0;
@@ -44,6 +44,11 @@ namespace Assets.Scripts
             }
             if (cloudController == null) {
                 Debug.Log("Error accessing gameController");
+            }
+
+            GameObject heroGameObject = GameObject.FindGameObjectWithTag("Player");
+            if (heroGameObject != null) {
+                heroController = heroGameObject.GetComponent<HeroController>();
             }
         }
 
@@ -77,11 +82,7 @@ namespace Assets.Scripts
             }
 
             if(enemyNumber <= 0) {
-                GameObject HeroGameObject = GameObject.FindGameObjectWithTag("Hero");
-                if (HeroGameObject != null) {
-                    heroController = HeroGameObject.GetComponent<HeroController>();
-                    heroController.SetWinner();
-                }
+                GameOverWin();
             }
         }
 
@@ -117,6 +118,21 @@ namespace Assets.Scripts
         public void phish()
         {
             cloudController.HealthBar.GetComponent<HealthBarController>().hit(1);
+        }
+
+        public void GameOverWin() {
+            heroController?.SetWinner();
+            GameOver();
+        }
+
+        public void GameOverLoose() {
+            heroController?.SetLoose();
+            GameOver();
+        }
+
+        private void GameOver() {
+            Destroy(gameObject);
+            Destroy(cloudController);
         }
 
         public void UpdateEnemyNumber(int increment) {

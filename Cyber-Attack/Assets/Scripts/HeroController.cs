@@ -10,36 +10,39 @@ public class HeroController : MonoBehaviour
     public Sprite JumpCat;
     public Sprite IdleCat;
 
+    private WeaponController weaponController;
+
 
     public float runSpeed = 40f;
     private float horizontalMove = 0f;
     private bool jump = false;
 
+    private bool gameWon = false;
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+        if (gameObject != null) {
+            weaponController = gameObject.GetComponent<WeaponController>();
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        CatAliveControl();
-        horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
-        Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        JumpControl();
-        ShootControl();
+        if (!gameWon) {
+            horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+            Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+            JumpControl();
+            ShootControl();
+        } else {
+            SetWinner();
+        }
     }
 
     private void FixedUpdate() {
         CharacterController.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
-    }
-
-    private void CatAliveControl() {
-        if (transform.position.y <= -3.66) {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = DeadCat;
-        }
     }
 
     private void JumpControl() {
@@ -52,6 +55,7 @@ public class HeroController : MonoBehaviour
     private void ShootControl() {
         if (Input.GetButtonDown("Fire1")) {
             Animator.SetBool("IsShooting", true);
+            weaponController.Shoot();
         }
 
         if (Input.GetButtonUp("Fire1")) {
@@ -65,5 +69,10 @@ public class HeroController : MonoBehaviour
 
     public void SetWinner() {
         Animator.SetBool("Winner", true);
+        gameWon = true;
+    }
+
+    public void SetLoose() {
+        
     }
 }
