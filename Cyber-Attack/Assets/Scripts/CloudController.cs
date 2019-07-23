@@ -10,6 +10,12 @@ public class CloudController : MonoBehaviour
     private bool isMovingRight = true;  // Check if the Cloud is moving to the right direction
     private Rigidbody2D rigidbody2D;    // The Cloud's rigid body
 
+    public GameObject Lock;
+    public GameObject Firewall;
+    private float[] offset = { -.5f, -.4f, -.2f, .2f, .4f, .5f };
+    private float[] fade = { .75f, .79f, .8f, .9f, .98f, 1 };
+    private int i = 0;
+    private bool offsetForward = true;
     public Animator animator;
 
     public bool firewall = false;
@@ -28,9 +34,45 @@ public class CloudController : MonoBehaviour
 
     // Update is called once per frame
     private void Update() {
+        if (firewall)
+        {
+            Firewall.transform.position = this.transform.position;
+            Firewall.GetComponent<SpriteRenderer>().enabled = true;
+            Firewall.GetComponent<SpriteRenderer>().color = new Color(1, .5f, .5f, offset[i]);
+        } else
+        {
+            Firewall.GetComponent<SpriteRenderer>().enabled = false;
+        }
 
-        animator.SetBool("firewall", firewall);
-        animator.SetBool("encripted", encripted);
+        if(encripted)
+        {
+            Lock.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + offset[i]);
+            
+            Lock.GetComponent<SpriteRenderer>().enabled = true;
+        } else
+        {
+            Lock.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        if (offsetForward)
+        {
+            i++;
+            if (i >= offset.Length)
+            {
+                i--;
+                offsetForward = false;
+            }
+        }
+        else
+        {
+            i--;
+            if (i < 0)
+            {
+                i++;
+                offsetForward = true;
+            }
+        }
+
     }
 
     private void FixedUpdate() {

@@ -567,11 +567,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keys: {fileID: 1861689750257322876, guid: 2818acaab36836e4ba00b69e72cd2bb1, type: 3}
-  phishingKeys: {fileID: 0}
+  phishingKeys: {fileID: 7913212831664321760, guid: b78e071e1c9ce41418419914c68d29a1,
+    type: 3}
   bricks: {fileID: 3060079155974883828, guid: d17870cbc9cd33d4295360094de573b6, type: 3}
   enemies: {fileID: 1874472930909959520, guid: f63c2b4b7434f48449b28c422a65c037, type: 3}
   gameTime: 0
-  phishingKeySpawnPercent: 0
+  phishingKeySpawnPercent: 5
   cloudController: {fileID: 0}
   encriptTime: 5
   lastEncript: 0
@@ -586,6 +587,7 @@ MonoBehaviour:
   enemyVector: {x: 5, y: 5.5, z: 0}
   enemySpawnTime: 5
   lastEnemySpawn: 0
+
 --- !u!1 &899690411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,8 +1599,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
+  Lock: {fileID: 964476250}
   animator: {fileID: 2086485622}
-  firewall: 1
+  firewall: 0
   encripted: 0
 --- !u!95 &2086485622
 Animator:
