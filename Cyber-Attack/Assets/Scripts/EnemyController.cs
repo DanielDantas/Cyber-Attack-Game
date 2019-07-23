@@ -9,9 +9,14 @@ public class EnemyController : MonoBehaviour
     private bool bouncing = false;
     private Vector3 lastPos;
 
+    private GameController gameController;
+
     // Start is called before the first frame update
     private void Start() {
-
+        GameObject GameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+        if (GameControllerObject != null) {
+            gameController = GameControllerObject.GetComponent<GameController>();
+        }
     }
 
     private void fixedUpdate()
@@ -40,17 +45,11 @@ public class EnemyController : MonoBehaviour
 
     public void Die() {
         Destroy(gameObject);
-
-        GameObject gameControllerObject = GameObject.Find("GameController");
-        if (gameControllerObject != null) {
-            GameController gameController = gameControllerObject.GetComponent<GameController>();
-            gameController.UpdateEnemyNumber(-1);
-        } 
+        gameController?.UpdateEnemyNumber(-1);
     }
 
     public void Bounce()
     {
-        bouncing = true;
-        
+        bouncing = true;    
     }
 }

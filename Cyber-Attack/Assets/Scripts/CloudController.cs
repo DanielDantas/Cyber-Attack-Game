@@ -157,4 +157,8 @@ public class CloudController : MonoBehaviour
         isMovingRight = !isMovingRight;
         horizontalMove *= -1;
     }
+
+    public void OnDestroy() {
+        //TODO
+    }
 }
