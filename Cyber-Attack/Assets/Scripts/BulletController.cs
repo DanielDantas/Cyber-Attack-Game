@@ -25,6 +25,12 @@ public class BulletController : MonoBehaviour
         BulletRB.velocity = transform.right * Speed;
     }
 
+    private void Update() {
+        if (transform.position.x >= 20f || transform.position.x <= -20f) {
+            Destroy(gameObject);
+        } 
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         var enemy = collision.GetComponent<EnemyController>();
         if (enemy != null) {

@@ -28,6 +28,7 @@ public class HeroController : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
         Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         JumpControl();
+        ShootControl();
     }
 
     private void FixedUpdate() {
@@ -45,6 +46,16 @@ public class HeroController : MonoBehaviour
         if (Input.GetButtonDown("Jump")) {
             jump = true;
             Animator.SetBool("IsJumping", true);
+        }
+    }
+
+    private void ShootControl() {
+        if (Input.GetButtonDown("Fire1")) {
+            Animator.SetBool("IsShooting", true);
+        }
+
+        if (Input.GetButtonUp("Fire1")) {
+            Animator.SetBool("IsShooting", false);
         }
     }
 
