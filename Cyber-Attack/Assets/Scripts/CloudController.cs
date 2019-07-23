@@ -94,7 +94,7 @@ public class CloudController : MonoBehaviour
         }
     }
 
-    private void OnTrigger2DEnter(Collider2D otherObj)
+    private void OnTriggerEnter2D(Collider2D otherObj)
     {
         Debug.Log("Hit by" + otherObj.gameObject.tag);
         if (otherObj.gameObject.tag == "Enemy")
@@ -120,7 +120,34 @@ public class CloudController : MonoBehaviour
             }
         }
     }
-     
+
+    private void OnCollisionEnter2d(Collider2D otherObj)
+    {
+        Debug.Log("Hit by" + otherObj.gameObject.tag);
+        if (otherObj.gameObject.tag == "Enemy")
+        {
+            if (firewall)
+            {
+                otherObj.gameObject.GetComponent<EnemyController>().Die();
+                currentFirewallCount--;
+                if (currentFirewallCount <= 0)
+                {
+                    firewall = false;
+                    currentFirewallCount = firewallCount;
+                }
+            }
+            else if (encripted)
+            {
+                otherObj.gameObject.GetComponent<EnemyController>().Bounce();
+            }
+            else
+            {
+                otherObj.gameObject.GetComponent<EnemyController>().Die();
+                HealthBar.GetComponent<HealthBarController>().hit(1);
+            }
+        }
+    }
+
     private void Move(float move) {
         rigidbody2D.velocity = new Vector2(move, rigidbody2D.velocity.y);
     }

@@ -108,7 +108,7 @@ namespace Assets.Scripts
 
         public void phish()
         {
-
+            cloudController.HealthBar.GetComponent<HealthBarController>().hit(1);
         }
     }
 }
