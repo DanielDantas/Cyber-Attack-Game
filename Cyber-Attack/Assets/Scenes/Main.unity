@@ -750,15 +750,15 @@ MonoBehaviour:
   firewallTime: 10
   lastFirewall: 0
   keyVector: {x: 11, y: 7, z: 0}
-  keySpawnTime: 5
-  lastKeySpawn: 0
+  keySpawnTime: 15
+  lastKeySpawn: 5
   brickVector: {x: 11, y: 7, z: 0}
-  brickSpawnTime: 5
-  lastBrickSpawn: 0
+  brickSpawnTime: 20
+  lastBrickSpawn: 5
   enemyVector: {x: 11, y: -7, z: 0}
   enemySpawnTime: 5
   lastEnemySpawn: 0
-  numberEachEnemy: 0a0000000a00000005000000
+  numberEachEnemy: 000000000000000001000000
 --- !u!1 &899690411
 GameObject:
   m_ObjectHideFlags: 0
