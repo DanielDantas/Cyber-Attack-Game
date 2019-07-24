@@ -6,6 +6,7 @@ using UnityEngine;
 public class HeroController : MonoBehaviour
 {
     public CharacterController CharacterController;
+    public FlagController flagController;
     public Animator Animator;
     public Sprite DeadCat;
     public Sprite JumpCat;

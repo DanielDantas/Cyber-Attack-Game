@@ -12,6 +12,7 @@ TagManager:
   - Lock
   - CloudFireFlicker
   - A*
+  - Flag
   layers:
   - Default
   - TransparentFX

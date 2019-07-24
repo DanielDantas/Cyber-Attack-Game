@@ -157,6 +157,8 @@ namespace Assets.Scripts
 
         public void GameOverWin() {
             heroController?.SetWinner();
+            Vector3 newPos = heroController.transform.position;
+            GameObject.FindGameObjectWithTag("Flag")?.GetComponent<FlagController>()?.show(new Vector3(newPos.x + 1f, newPos.y,newPos.z));
             cloudController.GameOverMode(isWinner: true);
             GameOver();
         }
