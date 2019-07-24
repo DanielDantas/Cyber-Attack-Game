@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,11 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int Health = 1;
+    public int speed;
     private bool bouncing = false;
     private Vector3 lastPos;
 
+    public Animator Animator;
     private GameController gameController;
 
     // Start is called before the first frame update
@@ -56,5 +59,25 @@ public class EnemyController : MonoBehaviour
     public void Bounce()
     {
         bouncing = true;    
+    }
+
+    public void setType(int i)
+    {
+        Animator.SetInteger("enemyType", i);
+        switch (i)
+        {
+            case 0:
+                Health = 2;
+                transform.parent.gameObject.GetComponent<AIPath>().maxSpeed = 5;
+                break;
+            case 1:
+                Health = 5;
+                transform.parent.gameObject.GetComponent<AIPath>().maxSpeed = 3;
+                break;
+            case 2:
+                Health = 10;
+                transform.parent.gameObject.GetComponent<AIPath>().maxSpeed = 1;
+                break;
+        }
     }
 }
