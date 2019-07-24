@@ -38,6 +38,7 @@ public class HeroController : MonoBehaviour
         if (Time.time - lastHit > immobileTime) {
             immobile = false;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            fading = false;
         }
         if (!gameOver) {
             if (!immobile) {
@@ -96,6 +97,7 @@ public class HeroController : MonoBehaviour
         if(gameObject.transform.position.y <= -30f) {
             gameObject.transform.position = new Vector3(0, 0, 0);
             immobile = true;
+            lastHit = Time.time;
         }
     }
 
