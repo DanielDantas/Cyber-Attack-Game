@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -49,6 +50,7 @@ namespace Assets.Scripts
             if (heroGameObject != null) {
                 heroController = heroGameObject.GetComponent<HeroController>();
             }
+            Time.timeScale = 1;
         }
 
         // Update is called once per frame
@@ -193,6 +195,7 @@ namespace Assets.Scripts
             }*/
 
             //Destroy(gameObject);
+            SceneManager.LoadSceneAsync("Intro");
         }
 
         public void UpdateEnemyNumber(int increment) {
