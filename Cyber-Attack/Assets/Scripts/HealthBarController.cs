@@ -24,6 +24,10 @@ public class HealthBarController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = sprites[23 - health];
         }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = sprites[22];
+        }
     }
 
     public void hit(int damage)
