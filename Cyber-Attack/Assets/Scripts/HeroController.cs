@@ -49,8 +49,6 @@ public class HeroController : MonoBehaviour
                 if (!fading) {
                     fading = true;
                     StartCoroutine(FadeImage(fade));
-                    fade = !fade;
-                    fading = false;
                 }
             }
         }
@@ -80,6 +78,9 @@ public class HeroController : MonoBehaviour
             }
 
         }
+
+        fade = !fade;
+        fading = false;
 
     }
 
