@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor;
+using System.Linq;
 
 namespace Assets.Scripts
 {
@@ -33,8 +33,9 @@ namespace Assets.Scripts
         public Vector3 enemyVector;
         public float enemySpawnTime;
         public float lastEnemySpawn = 0;
-        public int enemyNumber = 50;
         public int[] numberEachEnemy = { 5, 20, 10 };
+
+        private int enemyNumber = 0;
 
         private bool isGameOver = false;
 
@@ -53,6 +54,8 @@ namespace Assets.Scripts
                 heroController = heroGameObject.GetComponent<HeroController>();
             }
             Time.timeScale = 1;
+
+            enemyNumber = numberEachEnemy.Sum();
         }
 
         // Update is called once per frame
