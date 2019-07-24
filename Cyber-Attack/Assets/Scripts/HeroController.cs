@@ -45,6 +45,7 @@ public class HeroController : MonoBehaviour
                 Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
                 JumpControl();
                 ShootControl();
+                FallControl();
             } else {
                 if (!fading) {
                     fading = true;
@@ -80,6 +81,13 @@ public class HeroController : MonoBehaviour
             CharacterController.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         }
         jump = false;
+    }
+
+    private void FallControl() {
+        if(gameObject.transform.position.y <= -30f) {
+            gameObject.transform.position = new Vector3(0, 0, 0);
+            immobile = true;
+        }
     }
 
     private void JumpControl() {
