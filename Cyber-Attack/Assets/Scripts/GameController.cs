@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.Rendering;
 
 namespace Assets.Scripts
 {
@@ -40,17 +41,21 @@ namespace Assets.Scripts
         private bool isGameOver = false;
 
         // Start is called before the first frame update
-        private void Start() {
+        private void Start()
+        {
             GameObject GameControllerObject = GameObject.FindGameObjectWithTag("Cloud");
-            if (GameControllerObject != null) {
+            if (GameControllerObject != null)
+            {
                 cloudController = GameControllerObject.GetComponent<CloudController>();
             }
-            if (cloudController == null) {
+            if (cloudController == null)
+            {
                 Debug.Log("Error accessing gameController");
             }
 
             GameObject heroGameObject = GameObject.FindGameObjectWithTag("Player");
-            if (heroGameObject != null) {
+            if (heroGameObject != null)
+            {
                 heroController = heroGameObject.GetComponent<HeroController>();
             }
             Time.timeScale = 1;
@@ -59,126 +64,162 @@ namespace Assets.Scripts
         }
 
         // Update is called once per frame
-        private void Update() {
-            if (!isGameOver) {
+        private void Update()
+        {
+            if (!isGameOver)
+            {
                 GameControl();
             }
         }
 
-        private void GameControl() {
+        private void GameControl()
+        {
             gameTime += Time.deltaTime;
-
-            if (enemyNumber != 0 && gameTime - lastEnemySpawn > enemySpawnTime) {//we should use waves for this
+            bool dontspawn = false;
+            if (enemyNumber != 0 && gameTime - lastEnemySpawn > enemySpawnTime)
+            {//we should use waves for this
                 int spawn = UnityEngine.Random.Range(0, 3);
-                    if (numberEachEnemy[spawn] != 0) {
-                        Debug.Log("Spawning " + spawn);
-                    }
-                    else if (numberEachEnemy[1] != 0)
-                    {
-                        spawn = 1;
-                    }
-                    else if (numberEachEnemy[2] != 0)
-                    {
-                        spawn = 2;
-                    } else
-                    {
-                        spawn = 0;
-                    }
-                SpawnEnemy(spawn);
-                numberEachEnemy[spawn] -= 1;
-                lastEnemySpawn = gameTime;
+                if (numberEachEnemy[spawn] != 0)
+                {
+                    Debug.Log("Spawning " + spawn);
+                }
+                else if (numberEachEnemy[1] != 0)
+                {
+                    spawn = 1;
+                }
+                else if (numberEachEnemy[2] != 0)
+                {
+                    spawn = 2;
+                }
+                else if (numberEachEnemy[2] != 0)
+                {
+                    spawn = 0;
+                }
+                else
+                {
+                    dontspawn = true;
+                }
+                if (!dontspawn)
+                {
+                    SpawnEnemy(spawn);
+                    numberEachEnemy[spawn] -= 1;
+                    lastEnemySpawn = gameTime;
+                }
             }
 
-            if (cloudController.encripted && gameTime - lastEncript > encriptTime) {
+            if (cloudController.encripted && gameTime - lastEncript > encriptTime)
+            {
                 cloudController.encripted = false;
                 lastKeySpawn = gameTime;
             }
 
-            if (!cloudController.encripted && gameTime - lastKeySpawn > keySpawnTime) {
+            if (!cloudController.encripted && gameTime - lastKeySpawn > keySpawnTime)
+            {
                 SpawnKey();
                 lastKeySpawn = gameTime;
             }
 
-            if (cloudController.firewall && gameTime - lastFirewall > firewallTime) {
+            if (cloudController.firewall && gameTime - lastFirewall > firewallTime)
+            {
                 cloudController.firewall = false;
                 lastBrickSpawn = gameTime;
             }
 
-            if (!cloudController.firewall && gameTime - lastBrickSpawn > brickSpawnTime) {
+            if (!cloudController.firewall && gameTime - lastBrickSpawn > brickSpawnTime)
+            {
                 SpawnBrick();
                 lastBrickSpawn = gameTime;
             }
 
-            if (enemyNumber <= 0) {
+            if (enemyNumber <= 0)
+            {
                 GameOverWin();
             }
         }
 
-        private void SpawnKey() {
-            if (UnityEngine.Random.Range(0, 10) < phishingKeySpawnPercent) {
+        private void SpawnKey()
+        {
+            if (UnityEngine.Random.Range(0, 10) < phishingKeySpawnPercent)
+            {
                 Instantiate(phishingKeys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
-            } else {
+            }
+            else
+            {
                 Instantiate(keys, new Vector3(UnityEngine.Random.Range(-keyVector.x, keyVector.x), keyVector.y, keyVector.z), Quaternion.identity);
             }
         }
 
-        private void SpawnBrick() {
+        private void SpawnBrick()
+        {
             Instantiate(bricks, new Vector3(UnityEngine.Random.Range(-brickVector.x, brickVector.x), brickVector.y, brickVector.z), Quaternion.identity);
         }
 
-        private void SpawnEnemy(int type) {
+        private void SpawnEnemy(int type)
+        {
             float side = UnityEngine.Random.Range(0, 3);
             GameObject enemy;
             switch (side)
             {
                 case 0:
-                    enemy = Instantiate(enemies, new Vector3(-15, UnityEngine.Random.Range(enemyVector.y,0), enemyVector.z), Quaternion.identity);
+                    enemy = Instantiate(enemies, new Vector3(-15, UnityEngine.Random.Range(enemyVector.y, 0), enemyVector.z), Quaternion.identity);
                     break;
                 case 2:
-                    enemy = Instantiate(enemies, new Vector3(15, UnityEngine.Random.Range(enemyVector.y,0), enemyVector.z), Quaternion.identity);
+                    enemy = Instantiate(enemies, new Vector3(15, UnityEngine.Random.Range(enemyVector.y, 0), enemyVector.z), Quaternion.identity);
                     break;
                 default:
                     enemy = Instantiate(enemies, new Vector3(UnityEngine.Random.Range(-enemyVector.x, enemyVector.x), enemyVector.y, enemyVector.z), Quaternion.identity);
                     break;
-                
+
             }
             enemy.GetComponentInChildren<EnemyController>().setType(type);
         }
 
-        public void encriptData() {
+        public void encriptData()
+        {
             cloudController.encripted = true;
             lastEncript = gameTime;
             Debug.Log("Encripted");
         }
 
-        public void firewall() {
+        public void firewall()
+        {
             cloudController.firewall = true;
             lastFirewall = gameTime;
             Debug.Log("Flame On");
         }
 
-        public void phish() {
+        public void phish()
+        {
             cloudController.HealthBar.GetComponent<HealthBarController>().hit(1);
         }
 
-        public void GameOverWin() {
+        public void GameOverWin()
+        {
             heroController?.SetWinner();
             Vector3 newPos = heroController.transform.position;
-            GameObject.FindGameObjectWithTag("Flag")?.GetComponent<FlagController>()?.show(new Vector3(newPos.x + 1f, newPos.y,newPos.z));
+            GameObject.FindGameObjectWithTag("Flag")?.GetComponent<FlagController>()?.show(new Vector3(newPos.x + 1f, newPos.y, newPos.z));
             cloudController.GameOverMode(isWinner: true);
-            GameOver();
+            GameOver(true);
         }
 
-        public void GameOverLoss() {
+        public void GameOverLoss()
+        {
             heroController?.SetLooser();
             cloudController.GameOverMode(isWinner: false);
-            GameOver();
+            GameOver(false);
         }
 
-        private void GameOver() {
+        private void GameOver(bool win)
+        {
             isGameOver = true;
 
-            StartCoroutine(wait1());
+            if (!win)
+            {
+                StartCoroutine(wait1());
+            } else
+            {
+                Time.timeScale = 0;
+            }
             /*var gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var g in gameObjects) {
                 Destroy(g);
@@ -214,9 +255,9 @@ namespace Assets.Scripts
 
         IEnumerator EnterToContinue()
         {
-            
-             yield return new WaitForSecondsRealtime(5);
-             SceneManager.LoadSceneAsync("Intro");
+
+            yield return new WaitForSecondsRealtime(5);
+            SceneManager.LoadSceneAsync("Intro");
 
         }
         IEnumerator wait1()
@@ -228,7 +269,8 @@ namespace Assets.Scripts
         }
 
 
-        public void UpdateEnemyNumber(int increment) {
+        public void UpdateEnemyNumber(int increment)
+        {
             enemyNumber += increment;
         }
     }
