@@ -117,7 +117,7 @@ public class CloudController : MonoBehaviour
             else
             {
                 int type = otherObj.gameObject.GetComponent<EnemyController>().type + 1;
-                otherObj.gameObject.GetComponent<EnemyController>().explode();
+                otherObj.gameObject.GetComponent<EnemyController>().Die();
                 HealthBar.GetComponent<HealthBarController>().hit((int)Math.Pow(type,2));//fast guys -1, -4, -9
             }
         }
@@ -144,7 +144,7 @@ public class CloudController : MonoBehaviour
             }
             else
             {
-                otherObj.gameObject.GetComponent<EnemyController>().explode();
+                otherObj.gameObject.GetComponent<EnemyController>().Die();
                 HealthBar.GetComponent<HealthBarController>().hit(1);
             }
         }
