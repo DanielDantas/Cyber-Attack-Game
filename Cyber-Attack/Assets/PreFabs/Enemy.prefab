@@ -145,7 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
-  speed: 0
+  type: 0
+  force: 1
   Animator: {fileID: 540018729}
 --- !u!95 &540018729
 Animator:

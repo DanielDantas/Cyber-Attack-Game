@@ -7,9 +7,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int Health = 1;
-    private bool bouncing = false;
-    private Vector3 lastPos;
     public int type;
+    public float force;
     
 
     public Animator Animator;
@@ -31,12 +30,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     private void Update() {
         this.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        if (bouncing)
-        {
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(transform.position.x+(transform.position.x-lastPos.x), transform.position.y + (transform.position.y - lastPos.y)), ForceMode2D.Impulse);
-        }
-
-        lastPos = transform.position;
     }
 
     public void TakeDamage(int damage) {
@@ -59,7 +52,17 @@ public class EnemyController : MonoBehaviour
 
     public void Bounce()
     {
-        bouncing = true;    
+        Vector3 three = GameObject.FindGameObjectWithTag("Cloud").transform.position;
+        Vector3 dir = three - transform.position;
+        // We then get the opposite (-Vector3) and normalize it
+        dir = -dir.normalized;
+        this.GetComponent<Rigidbody2D>().AddForce(dir * force, ForceMode2D.Impulse);
+        float start = Time.time;
+        while(Time.time - start < 3)
+        {
+
+        }
+        this.GetComponent<Rigidbody2D>().angularVelocity = 0;
     }
 
     public void setType(int i)
