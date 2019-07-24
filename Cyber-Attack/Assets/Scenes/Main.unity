@@ -381,7 +381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749123246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: -2.26, z: 0}
+  m_LocalPosition: {x: -5.05, y: -2.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -511,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782490726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.74, y: -1.23, z: 0}
+  m_LocalPosition: {x: 5.4999995, y: -2.25, z: 0}
   m_LocalScale: {x: 0.796, y: 0.877, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -649,13 +649,13 @@ MonoBehaviour:
   lastEncript: 0
   firewallTime: 10
   lastFirewall: 0
-  keyVector: {x: 5, y: 5.5, z: 0}
+  keyVector: {x: 11, y: 5.5, z: 0}
   keySpawnTime: 5
   lastKeySpawn: 0
-  brickVector: {x: 5, y: 5.5, z: 0}
+  brickVector: {x: 11, y: 5.5, z: 0}
   brickSpawnTime: 5
   lastBrickSpawn: 0
-  enemyVector: {x: 10, y: -5, z: 0}
+  enemyVector: {x: 11, y: -5.5, z: 0}
   enemySpawnTime: 5
   lastEnemySpawn: 0
   enemyNumber: 2
@@ -723,7 +723,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -870,7 +870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020306780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.56, y: -3.82, z: 0}
+  m_LocalPosition: {x: 11.9, y: -2.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1327,7 +1327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496946292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: -0.10000038, y: -4.1099997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1622,7 +1622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832948906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.11, y: -3.83, z: 0}
+  m_LocalPosition: {x: -11.02, y: -2.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

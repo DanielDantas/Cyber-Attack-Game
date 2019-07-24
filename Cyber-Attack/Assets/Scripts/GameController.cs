@@ -114,7 +114,21 @@ namespace Assets.Scripts
         }
 
         private void SpawnEnemy(int type) {
-            GameObject enemy = Instantiate(enemies, new Vector3(UnityEngine.Random.Range(-enemyVector.x, enemyVector.x), enemyVector.y, enemyVector.z), Quaternion.identity);
+            float side = UnityEngine.Random.Range(0, 3);
+            GameObject enemy;
+            switch (side)
+            {
+                case 0:
+                    enemy = Instantiate(enemies, new Vector3(-15, UnityEngine.Random.Range(-enemyVector.y,enemyVector.y), enemyVector.z), Quaternion.identity);
+                    break;
+                case 2:
+                    enemy = Instantiate(enemies, new Vector3(15, UnityEngine.Random.Range(-enemyVector.y, enemyVector.y), enemyVector.z), Quaternion.identity);
+                    break;
+                default:
+                    enemy = Instantiate(enemies, new Vector3(UnityEngine.Random.Range(-enemyVector.x, enemyVector.x), enemyVector.y, enemyVector.z), Quaternion.identity);
+                    break;
+                
+            }
             enemy.GetComponentInChildren<EnemyController>().setType(type);
         }
 
@@ -148,7 +162,8 @@ namespace Assets.Scripts
 
         private void GameOver() {
             isGameOver = true;
-            var gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+            Time.timeScale = 0;
+            /*var gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var g in gameObjects) {
                 Destroy(g);
             }
@@ -175,9 +190,9 @@ namespace Assets.Scripts
             gameObjects = GameObject.FindGameObjectsWithTag("A*");
             foreach (var g in gameObjects) {
                 Destroy(g);
-            }
+            }*/
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         public void UpdateEnemyNumber(int increment) {

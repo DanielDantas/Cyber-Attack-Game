@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 400f;                          // Amount of force added when the player jumps.
+    [SerializeField] private float jumpForce = 1000f;                          // Amount of force added when the player jumps.
     [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool airControl = false;                         // Whether or not a player can steer while jumping;
