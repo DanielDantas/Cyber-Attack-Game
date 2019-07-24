@@ -125,14 +125,14 @@ namespace Assets.Scripts
             GameOver();
         }
 
-        public void GameOverLoose() {
-            heroController?.SetLoose();
+        public void GameOverLoss() {
+            heroController?.SetLooser();
             GameOver();
         }
 
         private void GameOver() {
             Destroy(gameObject);
-            Destroy(cloudController);
+            Time.timeScale = 0f;
         }
 
         public void UpdateEnemyNumber(int increment) {
