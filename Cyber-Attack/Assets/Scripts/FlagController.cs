@@ -6,8 +6,8 @@ public class FlagController : MonoBehaviour
 
     public Sprite[] flags;
     private int i = 0;
-    private bool offsetForward;
-    public bool on = false;
+    private bool offsetForward = true;
+    public bool on;
     void Start()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -19,7 +19,6 @@ public class FlagController : MonoBehaviour
         if (on)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = flags[i / 5];
-            i++;
             if (offsetForward)
             {
                 i++;

@@ -68,16 +68,22 @@ namespace Assets.Scripts
         private void GameControl() {
             gameTime += Time.deltaTime;
 
-            if (gameTime - lastEnemySpawn > enemySpawnTime) {//we should use waves for this
-                bool found = false;
-                int spawn = 0;
-                while (!found) {
-                    spawn = UnityEngine.Random.Range(0, 3);
+            if (enemyNumber != 0 && gameTime - lastEnemySpawn > enemySpawnTime) {//we should use waves for this
+                int spawn = UnityEngine.Random.Range(0, 3);
                     if (numberEachEnemy[spawn] != 0) {
-                        found = true;
                         Debug.Log("Spawning " + spawn);
                     }
-                }
+                    else if (numberEachEnemy[1] != 0)
+                    {
+                        spawn = 1;
+                    }
+                    else if (numberEachEnemy[2] != 0)
+                    {
+                        spawn = 2;
+                    } else
+                    {
+                        spawn = 0;
+                    }
                 SpawnEnemy(spawn);
                 numberEachEnemy[spawn] -= 1;
                 lastEnemySpawn = gameTime;
