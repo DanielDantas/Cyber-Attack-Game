@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 namespace Assets.Scripts
 {
@@ -10,6 +11,7 @@ namespace Assets.Scripts
         public GameObject phishingKeys;
         public GameObject bricks;
         public GameObject enemies;
+        public GameObject enter;
         public float gameTime = 0;
 
         public float phishingKeySpawnPercent; //(between 1-10) 10 = 100 percent spawn
@@ -164,7 +166,8 @@ namespace Assets.Scripts
 
         private void GameOver() {
             isGameOver = true;
-            Time.timeScale = 0;
+
+            StartCoroutine(wait1());
             /*var gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var g in gameObjects) {
                 Destroy(g);
@@ -195,8 +198,24 @@ namespace Assets.Scripts
             }*/
 
             //Destroy(gameObject);
-            SceneManager.LoadSceneAsync("Intro");
+            StartCoroutine(EnterToContinue());
         }
+
+        IEnumerator EnterToContinue()
+        {
+            
+             yield return new WaitForSecondsRealtime(5);
+             SceneManager.LoadSceneAsync("Intro");
+
+        }
+        IEnumerator wait1()
+        {
+
+            yield return new WaitForSecondsRealtime(1);
+            Time.timeScale = 0;
+
+        }
+
 
         public void UpdateEnemyNumber(int increment) {
             enemyNumber += increment;

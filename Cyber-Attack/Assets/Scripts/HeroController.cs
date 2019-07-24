@@ -62,12 +62,20 @@ public class HeroController : MonoBehaviour
             for (float i = 1; i >= 0; i -= Time.deltaTime) {
                 // set color with i as alpha
                 GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, i);
+                if (!immobile)
+                {
+                    yield break;
+                }
                 yield return null;
             }
         } else {
             for (float i = 1; i >= 0; i -= Time.deltaTime) {
                 // set color with i as alpha
                 GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1 - i);
+                if (!immobile)
+                {
+                    yield break;
+                }
                 yield return null;
             }
 
@@ -106,11 +114,13 @@ public class HeroController : MonoBehaviour
 
     public void SetWinner() {
         Animator.SetBool("Winner", true);
+        immobile = false;
         gameOver = true;
     }
 
     public void SetLooser() {
         Animator.SetBool("Looser", true);
+        immobile = false;;
         gameOver = true;
         CharacterController.Move(0f, false, true);
     }
