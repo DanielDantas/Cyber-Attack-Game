@@ -103,7 +103,8 @@ namespace Assets.Scripts
                 {
                     SpawnEnemy(spawn);
                     numberEachEnemy[spawn] -= 1;
-                    lastEnemySpawn = gameTime;
+                    lastEnemySpawn = gameTime - (2-spawn) - Random.Range(0,2);
+                    
                 }
             }
 
