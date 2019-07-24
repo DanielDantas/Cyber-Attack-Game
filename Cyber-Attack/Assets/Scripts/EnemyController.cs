@@ -7,9 +7,10 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int Health = 1;
-    public int speed;
     private bool bouncing = false;
     private Vector3 lastPos;
+    public int type;
+    
 
     public Animator Animator;
     private GameController gameController;
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour
 
     public void setType(int i)
     {
+        type = i;
         Animator.SetInteger("enemyType", i);
         switch (i)
         {
