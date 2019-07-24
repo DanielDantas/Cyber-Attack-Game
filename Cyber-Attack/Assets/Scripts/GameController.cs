@@ -121,10 +121,10 @@ namespace Assets.Scripts
             switch (side)
             {
                 case 0:
-                    enemy = Instantiate(enemies, new Vector3(-15, UnityEngine.Random.Range(-enemyVector.y,enemyVector.y), enemyVector.z), Quaternion.identity);
+                    enemy = Instantiate(enemies, new Vector3(-15, UnityEngine.Random.Range(enemyVector.y,0), enemyVector.z), Quaternion.identity);
                     break;
                 case 2:
-                    enemy = Instantiate(enemies, new Vector3(15, UnityEngine.Random.Range(-enemyVector.y, enemyVector.y), enemyVector.z), Quaternion.identity);
+                    enemy = Instantiate(enemies, new Vector3(15, UnityEngine.Random.Range(enemyVector.y,0), enemyVector.z), Quaternion.identity);
                     break;
                 default:
                     enemy = Instantiate(enemies, new Vector3(UnityEngine.Random.Range(-enemyVector.x, enemyVector.x), enemyVector.y, enemyVector.z), Quaternion.identity);
