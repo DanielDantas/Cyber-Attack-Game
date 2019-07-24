@@ -121,7 +121,7 @@ public class CloudController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2d(Collider2D otherObj)
+    private void OnCollisionEnter2d(Collision2D otherObj)
     {
         Debug.Log("Hit by" + otherObj.gameObject.tag);
         if (otherObj.gameObject.tag == "Enemy")

@@ -645,7 +645,6 @@ MonoBehaviour:
   gameTime: 0
   phishingKeySpawnPercent: 5
   cloudController: {fileID: 0}
-  heroController: {fileID: 0}
   encriptTime: 15
   lastEncript: 0
   firewallTime: 10
@@ -1103,6 +1102,7 @@ MonoBehaviour:
   DeadCat: {fileID: 21300000, guid: e5dcd7ac207f7584782dc73844b9e90f, type: 3}
   JumpCat: {fileID: 21300000, guid: 4ab63e37322b23247ae15fa117e5a536, type: 3}
   IdleCat: {fileID: 21300000, guid: a6476ec81bc93934ba33f1b389d89614, type: 3}
+  immobileTime: 3
   runSpeed: 60
 --- !u!95 &1240589226
 Animator:
@@ -1735,11 +1735,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1577128048854294887, guid: bb62de754b9347a4fb108f741a0fa35a,
-        type: 3}
-      propertyPath: m_Name
-      value: Cloud-Main
-      objectReference: {fileID: 0}
     - target: {fileID: 1577128048854294881, guid: bb62de754b9347a4fb108f741a0fa35a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1794,6 +1789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577128048854294887, guid: bb62de754b9347a4fb108f741a0fa35a,
+        type: 3}
+      propertyPath: m_Name
+      value: Cloud-Main
       objectReference: {fileID: 0}
     - target: {fileID: 1577128048854294880, guid: bb62de754b9347a4fb108f741a0fa35a,
         type: 3}
