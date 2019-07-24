@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -119,6 +120,8 @@ public class HeroController : MonoBehaviour
         if (otherObj.gameObject.tag == "Enemy") {
             immobile = true;
             lastHit = Time.time;
+            Transform Cloud = GameObject.FindGameObjectWithTag("Cloud").transform;
+            otherObj.gameObject.transform.parent.gameObject.GetComponent<AIDestinationSetter>().target = Cloud;
         }
 
     }
