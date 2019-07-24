@@ -27,15 +27,14 @@ public class HealthBarController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = sprites[23 - health];
         }
-        else
-        {
-            gameController.GameOverLoss();
-        }
-
     }
 
     public void hit(int damage)
     {
         health -= damage;
+
+        if (health <= 0) {
+            gameController.GameOverLoss();
+        }
     }
 }

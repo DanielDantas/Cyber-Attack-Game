@@ -24,7 +24,6 @@ public class HeroController : MonoBehaviour
     private bool jump = false;
 
     private bool gameOver = false;
-    private bool isGameWinner = false;
 
     // Start is called before the first frame update
     private void Start() {
@@ -52,12 +51,6 @@ public class HeroController : MonoBehaviour
                     fade = !fade;
                     fading = false;
                 }
-            }
-        } else {
-            if (isGameWinner) {
-                SetWinner();
-            } else {
-                SetLooser();
             }
         }
     }
@@ -113,13 +106,12 @@ public class HeroController : MonoBehaviour
     public void SetWinner() {
         Animator.SetBool("Winner", true);
         gameOver = true;
-        isGameWinner = true;
     }
 
     public void SetLooser() {
         Animator.SetBool("Looser", true);
         gameOver = true;
-        jump = false;
+        CharacterController.Move(0f, false, true);
     }
 
     private void OnTriggerEnter2D(Collider2D otherObj) {

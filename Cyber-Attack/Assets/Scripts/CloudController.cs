@@ -160,7 +160,7 @@ public class CloudController : MonoBehaviour
         horizontalMove *= -1;
     }
 
-    public void OnDestroy() {
-        //TODO
+    public void GameOverMode(bool isWinner = false) {
+        horizontalMove = 0f;
     }
 }

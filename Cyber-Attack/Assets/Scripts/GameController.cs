@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 namespace Assets.Scripts
 {
@@ -37,6 +33,8 @@ namespace Assets.Scripts
         public int enemyNumber = 50;
         public int[] numberEachEnemy = { 5, 20, 10 };
 
+        private bool isGameOver = false;
+
         // Start is called before the first frame update
         private void Start() {
             GameObject GameControllerObject = GameObject.FindGameObjectWithTag("Cloud");
@@ -55,16 +53,20 @@ namespace Assets.Scripts
 
         // Update is called once per frame
         private void Update() {
+            if (!isGameOver) {
+                GameControl();
+            }
+        }
+
+        private void GameControl() {
             gameTime += Time.deltaTime;
 
             if (gameTime - lastEnemySpawn > enemySpawnTime) {//we should use waves for this
                 bool found = false;
                 int spawn = 0;
-                while (!found)
-                {
+                while (!found) {
                     spawn = UnityEngine.Random.Range(0, 3);
-                    if(numberEachEnemy[spawn] != 0)
-                    {
+                    if (numberEachEnemy[spawn] != 0) {
                         found = true;
                         Debug.Log("Spawning " + spawn);
                     }
@@ -94,11 +96,10 @@ namespace Assets.Scripts
                 lastBrickSpawn = gameTime;
             }
 
-            if(enemyNumber <= 0) {
+            if (enemyNumber <= 0) {
                 GameOverWin();
             }
         }
-
 
         private void SpawnKey() {
             if (UnityEngine.Random.Range(0, 10) < phishingKeySpawnPercent) {
@@ -129,24 +130,54 @@ namespace Assets.Scripts
             Debug.Log("Flame On");
         }
 
-        public void phish()
-        {
+        public void phish() {
             cloudController.HealthBar.GetComponent<HealthBarController>().hit(1);
         }
 
         public void GameOverWin() {
             heroController?.SetWinner();
+            cloudController.GameOverMode(isWinner: true);
             GameOver();
         }
 
         public void GameOverLoss() {
             heroController?.SetLooser();
+            cloudController.GameOverMode(isWinner: false);
             GameOver();
         }
 
         private void GameOver() {
+            isGameOver = true;
+            var gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+            gameObjects = GameObject.FindGameObjectsWithTag("Key");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+            gameObjects = GameObject.FindGameObjectsWithTag("PKey");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+            gameObjects = GameObject.FindGameObjectsWithTag("Brick");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+            gameObjects = GameObject.FindGameObjectsWithTag("CloudFireFlicker");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+            gameObjects = GameObject.FindGameObjectsWithTag("Lock");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+            gameObjects = GameObject.FindGameObjectsWithTag("A*");
+            foreach (var g in gameObjects) {
+                Destroy(g);
+            }
+
             Destroy(gameObject);
-            Time.timeScale = 0f;
         }
 
         public void UpdateEnemyNumber(int increment) {
