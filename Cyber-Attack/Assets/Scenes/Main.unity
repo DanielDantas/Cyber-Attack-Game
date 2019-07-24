@@ -885,7 +885,7 @@ MonoBehaviour:
   brickVector: {x: 8, y: 7, z: 0}
   brickSpawnTime: 20
   lastBrickSpawn: 5
-  enemyVector: {x: 10, y: -7, z: 0}
+  enemyVector: {x: 10, y: -9, z: 0}
   enemySpawnTime: 5
   lastEnemySpawn: 0
   numberEachEnemy: 0a0000000a00000005000000
