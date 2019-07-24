@@ -13,6 +13,8 @@ public class HeroController : MonoBehaviour
     private bool immobile = false;
     private float lastHit = 0;
     public float immobileTime;
+    private bool fade = true;
+    private bool fading = false;
 
     private WeaponController weaponController;
 
@@ -35,7 +37,7 @@ public class HeroController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(immobile && Time.time - lastHit > immobileTime)
+        if(Time.time - lastHit > immobileTime)
         {
             immobile = false;
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
@@ -51,12 +53,12 @@ public class HeroController : MonoBehaviour
             }
             else
             {
-                if ((Time.time - lastHit) % 2 == 0)
+                if (!fading)
                 {
-                    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
-                } else
-                {
-                    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    fading = true;
+                    StartCoroutine(FadeImage(fade));
+                    fade = !fade;
+                    fading = false;
                 }
             }
         }
@@ -64,6 +66,31 @@ public class HeroController : MonoBehaviour
         {
             SetWinner();
         }
+    }
+
+    IEnumerator FadeImage(bool fade)
+    {
+        // loop over 1 second backwards
+        if (fade)
+        {
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+        }
+        else
+        {
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1-i);
+                yield return null;
+            }
+
+        }
+
     }
 
     private void FixedUpdate()

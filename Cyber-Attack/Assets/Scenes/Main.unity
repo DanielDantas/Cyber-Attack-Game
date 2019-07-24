@@ -1102,7 +1102,7 @@ MonoBehaviour:
   DeadCat: {fileID: 21300000, guid: e5dcd7ac207f7584782dc73844b9e90f, type: 3}
   JumpCat: {fileID: 21300000, guid: 4ab63e37322b23247ae15fa117e5a536, type: 3}
   IdleCat: {fileID: 21300000, guid: a6476ec81bc93934ba33f1b389d89614, type: 3}
-  immobileTime: 3
+  immobileTime: 5
   runSpeed: 60
 --- !u!95 &1240589226
 Animator:

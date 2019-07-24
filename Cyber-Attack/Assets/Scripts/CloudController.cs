@@ -115,7 +115,7 @@ public class CloudController : MonoBehaviour
             }
             else
             {
-                otherObj.gameObject.GetComponent<EnemyController>().Die();
+                otherObj.gameObject.GetComponent<EnemyController>().explode();
                 HealthBar.GetComponent<HealthBarController>().hit(1);
             }
         }
@@ -142,7 +142,7 @@ public class CloudController : MonoBehaviour
             }
             else
             {
-                otherObj.gameObject.GetComponent<EnemyController>().Die();
+                otherObj.gameObject.GetComponent<EnemyController>().explode();
                 HealthBar.GetComponent<HealthBarController>().hit(1);
             }
         }

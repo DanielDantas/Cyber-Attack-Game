@@ -48,6 +48,11 @@ public class EnemyController : MonoBehaviour
         gameController?.UpdateEnemyNumber(-1);
     }
 
+    public void explode()
+    {
+        Destroy(gameObject);
+    }
+
     public void Bounce()
     {
         bouncing = true;    
