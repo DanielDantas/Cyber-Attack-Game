@@ -35,6 +35,7 @@ namespace Assets.Scripts
         public float enemySpawnTime;
         public float lastEnemySpawn = 0;
         public int enemyNumber = 50;
+        public int[] numberEachEnemy = { 5, 20, 10 };
 
         // Start is called before the first frame update
         private void Start() {
@@ -57,7 +58,19 @@ namespace Assets.Scripts
             gameTime += Time.deltaTime;
 
             if (gameTime - lastEnemySpawn > enemySpawnTime) {//we should use waves for this
-                SpawnEnemy();
+                bool found = false;
+                int spawn = 0;
+                while (!found)
+                {
+                    spawn = UnityEngine.Random.Range(0, 3);
+                    if(numberEachEnemy[spawn] != 0)
+                    {
+                        found = true;
+                        Debug.Log("Spawning " + spawn);
+                    }
+                }
+                SpawnEnemy(spawn);
+                numberEachEnemy[spawn] -= 1;
                 lastEnemySpawn = gameTime;
             }
 
@@ -99,8 +112,9 @@ namespace Assets.Scripts
             Instantiate(bricks, new Vector3(UnityEngine.Random.Range(-brickVector.x, brickVector.x), brickVector.y, brickVector.z), Quaternion.identity);
         }
 
-        private void SpawnEnemy() {
-            Instantiate(enemies, new Vector3(UnityEngine.Random.Range(-enemyVector.x, enemyVector.x), enemyVector.y, enemyVector.z), Quaternion.identity);
+        private void SpawnEnemy(int type) {
+            GameObject enemy = Instantiate(enemies, new Vector3(UnityEngine.Random.Range(-enemyVector.x, enemyVector.x), enemyVector.y, enemyVector.z), Quaternion.identity);
+            enemy.GetComponentInChildren<EnemyController>().setType(type);
         }
 
         public void encriptData() {
