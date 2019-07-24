@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -117,7 +118,7 @@ public class CloudController : MonoBehaviour
             {
                 int type = otherObj.gameObject.GetComponent<EnemyController>().type + 1;
                 otherObj.gameObject.GetComponent<EnemyController>().explode();
-                HealthBar.GetComponent<HealthBarController>().hit(type^2);//fast guys -1, -4, -9
+                HealthBar.GetComponent<HealthBarController>().hit((int)Math.Pow(type,2));//fast guys -1, -4, -9
             }
         }
     }
